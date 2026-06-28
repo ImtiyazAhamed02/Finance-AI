@@ -44,13 +44,7 @@ export default function Landing() {
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        style={{
-          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
-          background: 'rgba(2, 6, 23, 0.7)', backdropFilter: 'blur(24px)',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          padding: '0 40px', height: 72,
-        }}
+        className="landing-nav"
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <div style={{
@@ -79,7 +73,7 @@ export default function Landing() {
       </motion.nav>
 
       {/* Hero section */}
-      <section ref={heroRef} style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: 72, zIndex: 1 }}>
+      <section ref={heroRef} className="landing-hero">
         <motion.div
           style={{ y: heroY, opacity: heroOpacity }}
           initial={{ opacity: 0, y: 40 }}
@@ -87,7 +81,7 @@ export default function Landing() {
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="hero-content"
         >
-          <div style={{ position: 'relative', zIndex: 2, maxWidth: 800, padding: '0 40px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div className="landing-hero-content">
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -148,7 +142,7 @@ export default function Landing() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
-              style={{ display: 'flex', gap: 40, marginTop: 70, justifyContent: 'center' }}
+              className="landing-stats-container"
             >
               {stats.map((s, i) => (
                 <div key={i} style={{ textAlign: 'center' }}>
@@ -175,7 +169,7 @@ export default function Landing() {
       </section>
 
       {/* Features section */}
-      <section style={{ position: 'relative', zIndex: 1, padding: '120px 40px', maxWidth: 1200, margin: '0 auto' }}>
+      <section className="landing-features-section">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -217,19 +211,13 @@ export default function Landing() {
       </section>
 
       {/* CTA section */}
-      <section style={{ position: 'relative', zIndex: 1, padding: '60px 40px 140px', textAlign: 'center' }}>
+      <section className="landing-cta-section">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          style={{
-            maxWidth: 800, margin: '0 auto',
-            background: 'linear-gradient(180deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.4) 100%)',
-            border: '1px solid rgba(255,255,255,0.05)',
-            borderRadius: 32, padding: '80px 48px',
-            boxShadow: '0 30px 60px rgba(0,0,0,0.4)',
-          }}
+          className="landing-cta-card"
         >
           <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 40, fontWeight: 800, marginBottom: 20, letterSpacing: '-1px', color: '#FFFFFF' }}>
             Elevate your financial future.
