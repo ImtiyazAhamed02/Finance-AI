@@ -44,47 +44,48 @@ export default function StatCard({ title, value, icon: Icon, iconBg, trend, tren
       whileHover={{ scale: 1.01 }}
     >
       {/* Glow blob */}
-      <div style={{
-        position: 'absolute', width: 100, height: 100, borderRadius: '50%',
-        background: iconBg || 'rgba(99,102,241,0.3)',
-        filter: 'blur(40px)', opacity: 0.3, top: -20, right: -20, pointerEvents: 'none',
-      }} />
+      <div 
+        className="stat-card-glow"
+        style={{
+          background: iconBg || 'rgba(99,102,241,0.3)',
+        }} 
+      />
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 }}>
-        <div style={{
-          width: 44, height: 44, borderRadius: 12,
-          background: iconBg || 'var(--bg-surface)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          border: '1px solid var(--border)',
-        }}>
-          {Icon && <Icon size={20} color={iconBg ? 'white' : 'var(--primary)'} />}
+      <div className="stat-card-header">
+        <div 
+          className="stat-card-icon-wrapper"
+          style={{
+            background: iconBg || 'var(--bg-surface)',
+          }}
+        >
+          {Icon && <Icon className="stat-card-icon" size={20} color={iconBg ? 'white' : 'var(--primary)'} />}
         </div>
 
         {trend !== undefined && (
-          <div style={{
-            display: 'flex', alignItems: 'center', gap: 4,
-            padding: '4px 8px', borderRadius: 20,
-            background: trendNeutral ? 'rgba(148,163,184,0.1)' : trendPositive ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)',
-            border: `1px solid ${trendNeutral ? 'rgba(148,163,184,0.2)' : trendPositive ? 'rgba(34,197,94,0.2)' : 'rgba(239,68,68,0.2)'}`,
-          }}>
+          <div 
+            className="stat-card-trend"
+            style={{
+              color: trendColor,
+              background: trendNeutral ? 'rgba(148,163,184,0.1)' : trendPositive ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)',
+              borderColor: trendNeutral ? 'rgba(148,163,184,0.2)' : trendPositive ? 'rgba(34,197,94,0.2)' : 'rgba(239,68,68,0.2)',
+            }}
+          >
             <TrendIcon size={12} color={trendColor} />
-            <span style={{ fontSize: 12, fontWeight: 600, color: trendColor }}>
-              {Math.abs(Number(trend))}%
-            </span>
+            <span>{Math.abs(Number(trend))}%</span>
           </div>
         )}
       </div>
 
-      <div style={{ marginBottom: 4 }}>
-        <div style={{ fontSize: 26, fontWeight: 800, color: 'var(--text-primary)', fontFamily: "'Space Grotesk', sans-serif", letterSpacing: '-0.5px' }}>
+      <div className="stat-card-value-container">
+        <div className="stat-card-value">
           {formatCurrency(count)}
         </div>
       </div>
 
-      <div style={{ fontSize: 13, color: 'var(--text-secondary)', fontWeight: 500 }}>{title}</div>
+      <div className="stat-card-title">{title}</div>
 
       {(trendLabel || subtitle) && (
-        <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 8 }}>
+        <div className="stat-card-subtitle">
           {trendLabel || subtitle}
         </div>
       )}
