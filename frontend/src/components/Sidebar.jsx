@@ -82,6 +82,7 @@ export default function Sidebar() {
 
       <button
         onClick={toggleSidebar}
+        className="desktop-only"
         style={{
           position: 'absolute',
           top: 30,

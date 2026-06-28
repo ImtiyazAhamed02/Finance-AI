@@ -509,6 +509,10 @@ body {
     margin-left: 0 !important;
   }
   
+  .layout-main-content main {
+    padding-bottom: 96px !important;
+  }
+  
   .sidebar {
     position: fixed !important;
     top: 0;
