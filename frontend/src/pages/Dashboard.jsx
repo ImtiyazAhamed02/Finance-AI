@@ -64,7 +64,7 @@ export default function Dashboard() {
   const healthColor = healthScore >= 80 ? '#22C55E' : healthScore >= 60 ? '#06B6D4' : healthScore >= 40 ? '#F59E0B' : '#EF4444';
 
   return (
-    <div style={{ maxWidth: 1400, margin: '0 auto' }}>
+    <div style={{ width: '100%', maxWidth: 1400, margin: '0 auto' }}>
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 28 }}>
         <div>
@@ -103,13 +103,7 @@ export default function Dashboard() {
               trendLabel={`vs last month`} delay={0.20} />
             <StatCard title="Net Savings" value={Math.max(0, summary.savings || 0)} icon={PiggyBank}
               iconBg="rgba(99,102,241,0.3)" subtitle={`${summary.savingsRate || 0}% savings rate`} delay={0.24} />
-            <motion.div
-              className="stat-card"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.28 }}
-              whileHover={{ scale: 1.01 }}
-            >
+            <div className="stat-card">
               <div style={{ position: 'absolute', width: 100, height: 100, borderRadius: '50%', background: healthColor, filter: 'blur(40px)', opacity: 0.25, top: -20, right: -20 }} />
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16 }}>
                 <div style={{ width: 44, height: 44, borderRadius: 12, background: `${healthColor}20`, display: 'flex', alignItems: 'center', justifyContent: 'center', border: `1px solid ${healthColor}30` }}>
@@ -123,7 +117,7 @@ export default function Dashboard() {
               <div style={{ fontSize: 12, color: 'var(--text-muted)', marginTop: 8 }}>
                 {healthScore >= 80 ? '🏆 Excellent' : healthScore >= 60 ? '✅ Good' : healthScore >= 40 ? '⚠️ Fair' : '🔴 Needs Attention'}
               </div>
-            </motion.div>
+            </div>
           </>
         )}
       </div>
@@ -131,7 +125,7 @@ export default function Dashboard() {
       {/* Charts row */}
       <div className="dashboard-grid" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 20, marginBottom: 24 }}>
         {/* Monthly Trend */}
-        <motion.div className="glass-card" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} style={{ padding: 24 }}>
+        <div className="glass-card" style={{ padding: 24 }}>
           <div style={{ marginBottom: 20 }}>
             <h3 className="section-title">Monthly Trend</h3>
             <p className="section-subtitle">Income vs Expense (last 6 months)</p>
@@ -157,10 +151,10 @@ export default function Dashboard() {
               <Area type="monotone" dataKey="expense" name="Expense" stroke="#EF4444" fill="url(#expenseGrad)" strokeWidth={2.5} dot={false} />
             </AreaChart>
           </ResponsiveContainer>
-        </motion.div>
+        </div>
 
         {/* Expense Breakdown */}
-        <motion.div className="glass-card" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }} style={{ padding: 24 }}>
+        <div className="glass-card" style={{ padding: 24 }}>
           <div style={{ marginBottom: 20 }}>
             <h3 className="section-title">Expense Breakdown</h3>
             <p className="section-subtitle">By category this month</p>
@@ -192,11 +186,11 @@ export default function Dashboard() {
               No expense data yet
             </div>
           )}
-        </motion.div>
+        </div>
       </div>
 
       {/* Savings bar chart */}
-      <motion.div className="glass-card" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} style={{ padding: 24, marginBottom: 24 }}>
+      <div className="glass-card" style={{ padding: 24, marginBottom: 24 }}>
         <div style={{ marginBottom: 20 }}>
           <h3 className="section-title">Savings Overview</h3>
           <p className="section-subtitle">Monthly savings trend</p>
@@ -214,10 +208,10 @@ export default function Dashboard() {
             </Bar>
           </BarChart>
         </ResponsiveContainer>
-      </motion.div>
+      </div>
 
       {/* AI Insights */}
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}>
+      <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
           <div style={{ width: 32, height: 32, borderRadius: 10, background: 'var(--bg-card)', border: '1px solid var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Sparkles size={16} color="var(--primary)" />
@@ -244,7 +238,7 @@ export default function Dashboard() {
             <p>Add your income and expenses to get personalized AI insights</p>
           </div>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 }

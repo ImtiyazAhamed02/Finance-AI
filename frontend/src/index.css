@@ -570,8 +570,14 @@ body {
   transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.layout-main-content.sidebar-open { margin-left: 260px; }
-.layout-main-content.sidebar-closed { margin-left: 72px; }
+.layout-main-content.sidebar-open {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+}
+.layout-main-content.sidebar-closed {
+  margin-left: 72px;
+  width: calc(100% - 72px);
+}
 
 @media (max-width: 768px) {
   .desktop-only { display: none !important; }
@@ -582,6 +588,10 @@ body {
   .layout-main-content.sidebar-closed {
     margin-left: 0 !important;
     width: 100% !important;
+  }
+  
+  .layout-main-content main {
+    padding-bottom: 8px !important;
   }
   
   .sidebar {
