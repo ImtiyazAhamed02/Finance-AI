@@ -14,11 +14,8 @@ export default function AIInsightCard({ insight, index = 0 }) {
   const config = typeConfig[type] || typeConfig.tip;
 
   return (
-    <motion.div
+    <div
       className="insight-card"
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.4 }}
       style={{ borderColor: config.border }}
     >
       {/* Glow background */}
@@ -68,6 +65,6 @@ export default function AIInsightCard({ insight, index = 0 }) {
         <Sparkles size={10} color="var(--primary)" />
         <span style={{ fontSize: 10, color: 'var(--primary)', fontWeight: 600 }}>AI</span>
       </div>
-    </motion.div>
+    </div>
   );
 }

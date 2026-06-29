@@ -34,17 +34,9 @@ export default function Layout() {
           padding: '24px 24px 12px 24px',
           scrollbarWidth: 'thin',
         }}>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={location.pathname}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.25, ease: 'easeOut' }}
-            >
+          <div key={location.pathname}>
               <Outlet />
-            </motion.div>
-          </AnimatePresence>
+            </div>
         </main>
       </div>
     </div>
