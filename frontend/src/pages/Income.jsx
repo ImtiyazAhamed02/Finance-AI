@@ -148,23 +148,23 @@ export default function Income() {
 
       {/* Summary cards */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16, marginBottom: 24 }}>
-        <motion.div className="glass-card" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} style={{ padding: '20px 24px' }}>
+        <div className="glass-card" style={{ padding: '20px 24px' }}>
           <div style={{ fontSize: 12, color: 'var(--text-secondary)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: 0.5 }}>Total This Year</div>
           <div style={{ fontSize: 26, fontWeight: 800, color: 'var(--success)', fontFamily: "'Outfit'" }}>{formatCurrency(totalYear)}</div>
-        </motion.div>
+        </div>
         {Object.entries(byCategory).slice(0, 3).map(([cat, amt], i) => (
-          <motion.div key={cat} className="glass-card" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: (i+1)*0.08 }} style={{ padding: '20px 24px' }}>
+          <div key={cat} className="glass-card" style={{ padding: '20px 24px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
               <div style={{ width: 8, height: 8, borderRadius: '50%', background: INCOME_COLORS[cat] || 'var(--primary)' }} />
               <span style={{ fontSize: 12, color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: 0.5 }}>{cat}</span>
             </div>
             <div style={{ fontSize: 22, fontWeight: 800, color: 'var(--text-primary)', fontFamily: "'Outfit'" }}>{formatCurrency(amt)}</div>
-          </motion.div>
+          </div>
         ))}
       </div>
 
       {/* Monthly chart */}
-      <motion.div className="glass-card" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} style={{ padding: 24, marginBottom: 24 }}>
+      <div className="glass-card" style={{ padding: 24, marginBottom: 24 }}>
         <h3 className="section-title" style={{ marginBottom: 4 }}>Monthly Income</h3>
         <p className="section-subtitle" style={{ marginBottom: 20 }}>Year-to-date breakdown</p>
         <ResponsiveContainer width="100%" height={200}>
@@ -182,10 +182,10 @@ export default function Income() {
             </Bar>
           </BarChart>
         </ResponsiveContainer>
-      </motion.div>
+      </div>
 
       {/* Income table */}
-      <motion.div className="glass-card" initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ overflow: 'hidden' }}>
+      <div className="glass-card" style={{ overflow: 'hidden' }}>
         <div style={{ padding: '16px 20px', borderBottom: '1px solid rgba(99,102,241,0.08)' }}>
           <h3 style={{ fontSize: 15, fontWeight: 600 }}>All Income Records</h3>
         </div>
@@ -199,7 +199,7 @@ export default function Income() {
             <tbody>
               {isLoading ? (
                 Array.from({ length: 5 }).map((_, i) => (
-                  <tr key={i}><td colSpan={6}><div className="skeleton" style={{ height: 20, borderRadius: 6 }} /></td></tr>
+                  <tr key={i}><td colSpan={7}><div className="skeleton" style={{ height: 20, borderRadius: 6 }} /></td></tr>
                 ))
               ) : incomes.length === 0 ? (
                 <tr><td colSpan={7} style={{ textAlign: 'center', padding: 48, color: 'var(--text-secondary)' }}>
@@ -207,7 +207,7 @@ export default function Income() {
                   No income records yet. Add your first one!
                 </td></tr>
               ) : incomes.map((inc, i) => (
-                <motion.tr key={inc.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.04 }}>
+                <tr key={inc.id}>
                   <td data-label="Title" style={{ fontWeight: 500, color: 'var(--text-primary)' }}>{inc.title}</td>
                   <td data-label="Category">
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '3px 10px', borderRadius: 20, fontSize: 12, background: `${INCOME_COLORS[inc.category] || '#6366F1'}18`, color: INCOME_COLORS[inc.category] || '#818CF8' }}>
@@ -229,12 +229,12 @@ export default function Income() {
                       <button onClick={() => { if (confirm('Delete?')) deleteMutation.mutate(inc.id); }} style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', color: 'var(--danger)', borderRadius: 8, padding: '5px 8px', cursor: 'pointer', display: 'flex' }}><Trash2 size={13} /></button>
                     </div>
                   </td>
-                </motion.tr>
+                </tr>
               ))}
             </tbody>
           </table>
         </div>
-      </motion.div>
+      </div>
 
       <AnimatePresence>
         {modal !== null && (

@@ -310,21 +310,21 @@ export default function Expenses() {
           {/* Summary bar */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 16, marginBottom: 24 }}>
             {(summaryData?.byCategory || []).slice(0, 3).map((cat, i) => (
-              <motion.div key={i} className="glass-card" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.08 }} style={{ padding: '16px 20px', display: 'flex', alignItems: 'center', gap: 14 }}>
+              <div key={i} className="glass-card" style={{ padding: '16px 20px', display: 'flex', alignItems: 'center', gap: 14 }}>
                 <div style={{ width: 10, height: 32, borderRadius: 4, background: CATEGORY_COLORS[cat.category] || 'var(--primary)', flexShrink: 0 }} />
                 <div>
                   <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--text-primary)' }}>{formatCurrency(cat.amount)}</div>
                   <div style={{ fontSize: 12, color: 'var(--text-secondary)' }}>{cat.category} ({cat.percentage}%)</div>
                 </div>
-              </motion.div>
+              </div>
             ))}
-            <motion.div className="glass-card" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.24 }} style={{ padding: '16px 20px', display: 'flex', alignItems: 'center', gap: 14 }}>
+            <div className="glass-card" style={{ padding: '16px 20px', display: 'flex', alignItems: 'center', gap: 14 }}>
               <div style={{ width: 10, height: 32, borderRadius: 4, background: 'linear-gradient(135deg, var(--primary), var(--accent))', flexShrink: 0 }} />
               <div>
                 <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--text-primary)' }}>{formatCurrency(totalThisMonth)}</div>
                 <div style={{ fontSize: 12, color: 'var(--text-secondary)' }}>Total this year</div>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Filters */}
@@ -350,7 +350,7 @@ export default function Expenses() {
           </div>
 
           {/* Table */}
-          <motion.div className="glass-card" initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ overflow: 'hidden' }}>
+          <div className="glass-card" style={{ overflow: 'hidden' }}>
             <div className="table-responsive">
               <table className="data-table">
                 <thead>
@@ -381,7 +381,7 @@ export default function Expenses() {
                     </td></tr>
                   ) : (
                     expenses.map((exp, i) => (
-                      <motion.tr key={exp.id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.04 }}>
+                      <tr key={exp.id}>
                         <td data-label="Title" style={{ fontWeight: 500, color: 'var(--text-primary)' }}>{exp.title}</td>
                         <td data-label="Category">
                           <span style={{
@@ -408,11 +408,11 @@ export default function Expenses() {
                             </button>
                             <button onClick={() => { if (confirm('Delete this expense?')) deleteMutation.mutate(exp.id); }}
                               style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', color: 'var(--danger)', borderRadius: 8, padding: '5px 8px', cursor: 'pointer', display: 'flex' }}>
-                              <Trash2 size={13} />
+                                <Trash2 size={13} />
                             </button>
                           </div>
                         </td>
-                      </motion.tr>
+                      </tr>
                     ))
                   )}
                 </tbody>
@@ -427,10 +427,10 @@ export default function Expenses() {
                 <button className="btn-ghost" disabled={page >= totalPages - 1} onClick={() => setPage(p => p + 1)} style={{ padding: '6px 14px', fontSize: 13 }}>Next →</button>
               </div>
             )}
-          </motion.div>
+          </div>
         </>
       ) : (
-        <motion.div className="glass-card" initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ overflow: 'hidden' }}>
+        <div className="glass-card" style={{ overflow: 'hidden' }}>
           <div className="table-responsive">
             <table className="data-table">
               <thead>
@@ -457,7 +457,7 @@ export default function Expenses() {
                   debts.map((debt, i) => {
                     const remaining = debt.amount_lent - debt.amount_collected;
                     return (
-                      <motion.tr key={debt.id} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.04 }}>
+                      <tr key={debt.id}>
                         <td data-label="Person Name" style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{debt.person_name}</td>
                         <td data-label="Amount Lent" style={{ fontWeight: 700, color: 'var(--danger)' }}>{formatCurrency(debt.amount_lent)}</td>
                         <td data-label="Collected" style={{ fontWeight: 700, color: 'var(--success)' }}>{formatCurrency(debt.amount_collected)}</td>
@@ -485,14 +485,14 @@ export default function Expenses() {
                             </button>
                           </div>
                         </td>
-                      </motion.tr>
+                      </tr>
                     );
                   })
                 )}
               </tbody>
             </table>
           </div>
-        </motion.div>
+        </div>
       )}
 
       {/* Modals */}
