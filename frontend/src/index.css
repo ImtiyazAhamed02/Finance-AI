@@ -613,18 +613,18 @@ body {
     position: fixed !important;
     top: 0;
     left: 0;
-    height: 100vh;
+    height: 100dvh !important;
     width: 260px !important;
     z-index: 1050;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   }
   
   .sidebar.closed {
-    transform: translateX(-100%);
+    transform: translateX(-100%) !important;
   }
   
   .sidebar.open {
-    transform: translateX(0);
+    transform: translateX(0) !important;
   }
   
   .dashboard-grid {

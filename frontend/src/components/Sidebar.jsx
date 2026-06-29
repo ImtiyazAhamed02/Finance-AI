@@ -34,21 +34,21 @@ export default function Sidebar() {
   const initials = username.slice(0, 2).toUpperCase();
 
   return (
-    <motion.aside
+    <aside
       className={`sidebar ${sidebarOpen ? 'open' : 'closed'}`}
-      animate={{ width: sidebarOpen ? 260 : 72 }}
-      transition={{ duration: 0.3, ease: 'easeInOut' }}
       style={{
         position: 'fixed',
         top: 0,
         left: 0,
-        height: '100vh',
+        height: '100dvh',
         background: 'var(--bg-surface)',
         borderRight: '1px solid var(--border)',
         display: 'flex',
         flexDirection: 'column',
         zIndex: 1050,
-        transition: 'background 0.3s ease, border-color 0.3s ease',
+        transition: 'width 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease, border-color 0.3s ease',
+        width: sidebarOpen ? 260 : 72,
+        overflow: 'hidden',
       }}
     >
       {/* Logo */}
@@ -207,6 +207,6 @@ export default function Sidebar() {
           )}
         </div>
       </div>
-    </motion.aside>
+    </aside>
   );
 }
