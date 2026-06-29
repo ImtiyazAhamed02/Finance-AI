@@ -592,7 +592,7 @@ body {
   }
   
   .layout-main-content main {
-    padding: 16px 16px 0px 16px !important;
+    padding: 16px 16px 8px 16px !important;
     overflow-x: hidden !important;
   }
   
