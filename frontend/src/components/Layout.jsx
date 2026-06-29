@@ -9,7 +9,7 @@ export default function Layout() {
   const toggleSidebar = useAppStore(s => s.toggleSidebar);
 
   return (
-    <div style={{ display: 'flex', height: '100dvh', background: 'var(--bg-primary)', overflow: 'hidden', transition: 'background 0.3s ease' }}>
+    <div style={{ display: 'flex', flex: 1, minHeight: '100dvh', width: '100%', background: 'var(--bg-primary)', overflow: 'hidden', transition: 'background 0.3s ease' }}>
       {/* Background orbs */}
       <div className="orb" style={{ width: 600, height: 600, background: 'var(--primary)', top: -200, left: -200 }} />
       <div className="orb" style={{ width: 400, height: 400, background: 'var(--accent)', bottom: -100, right: -100 }} />
