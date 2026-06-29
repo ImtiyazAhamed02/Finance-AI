@@ -31,7 +31,7 @@ export default function Layout() {
           flex: 1,
           overflowY: 'auto',
           overflowX: 'hidden',
-          padding: '24px 24px 12px 24px',
+          padding: '24px 24px 0 24px',
           scrollbarWidth: 'thin',
         }}>
           <div key={location.pathname}>
