@@ -584,6 +584,14 @@ body {
   transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Desktop sidebar widths - controlled purely by CSS */
+.sidebar.open {
+  width: 260px;
+}
+.sidebar.closed {
+  width: 72px;
+}
+
 .layout-main-content.sidebar-open {
   margin-left: 260px;
   width: calc(100% - 260px);

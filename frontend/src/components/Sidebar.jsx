@@ -46,9 +46,8 @@ export default function Sidebar() {
         display: 'flex',
         flexDirection: 'column',
         zIndex: 1050,
-        transition: 'width 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease, border-color 0.3s ease',
-        width: sidebarOpen ? 260 : 72,
         overflow: 'hidden',
+        transition: 'width 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease, border-color 0.3s ease',
       }}
     >
       {/* Logo */}
