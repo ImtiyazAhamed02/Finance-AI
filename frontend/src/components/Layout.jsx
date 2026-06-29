@@ -30,6 +30,7 @@ export default function Layout() {
         <main style={{
           flex: 1,
           overflowY: 'auto',
+          overflowX: 'hidden',
           padding: '24px',
           scrollbarWidth: 'thin',
         }}>
